@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/styles/history.css" />
+    <title>Chatbot</title>
+
+
+
+    <style>
+        /* body {
+            display: flex;
+            justify-content: center;
+        }
+         */
+        
+        .chatbot-container {
+            width: 500px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* margin-top: 2%;
+            margin-bottom: 2%; */
+        }
+        
+        #chatbot {
+            background-color: #f5f5f5;
+            border: 1px solid #eef1f5;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        
+        #header {
+            background-color: darkslategrey;
+            color: #ffffff;
+            padding: 20px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        
+        message-container {
+            background: #ffffff;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        #conversation {
+            height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @keyframes message-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chatbot-message {
+            /* display: flex; */
+            align-items: flex-start;
+            position: relative;
+            font-size: 16px;
+            line-height: 20px;
+            border-radius: 20px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            max-width: 100%;
+            padding: 0 15px;
+        }
+        
+        .user-message {
+            justify-content: flex-end;
+        }
+        
+        .chatbot-text {
+            background-color: white;
+            color: #333333;
+            font-size: 1.1em;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        #input-form {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #eef1f5;
+        }
+        
+        #input-field {
+            flex: 1;
+            height: 60px;
+            border: 1px solid #eef1f5;
+            border-radius: 4px;
+            padding: 0 10px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background: #ffffff;
+            color: #333333;
+            border: none;
+        }
+        
+        .send-icon {
+            margin-right: 10px;
+            cursor: pointer;
+            height: 50px;
+            width: 50px;
+        }
+        
+        #input-field:focus {
+            border-color: #333333;
+            outline: none;
+        }
+        
+        #submit-button {
+            background-color: transparent;
+            border: none;
+        }
+        
+        p[sentTime]:hover::after {
+            content: attr(sentTime);
+            position: absolute;
+            top: -3px;
+            font-size: 14px;
+            color: gray;
+        }
+        
+        .chatbot p[sentTime]:hover::after {
+            left: 15px;
+        }
+        
+        .user-message p[sentTime]:hover::after {
+            right: 15px;
+        }
+        /* width */
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+        }
+        /* Track */
+        
+         ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        /* Handle */
+        
+         ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        /* Handle on hover */
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default" style="background-color: #15172b;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">
+                    Diabetes Predictor</a>
+            </div>
+            <ul class="nav navbar-nav">
+
+
+                <li><a href="/index" style="color:white;">Home</a></li>
+                <li><a href="/login" style="color:white;">Login</a></li>
+                <li><a href="/predict" style="color:white;">Predict</a></li>
+                <li><a href="/history" style="color:white;">History</a></li>
+                <li><a href="/diet" style="color:white">Diet Recommendations</a></li>
+                <li class="active"><a href="/chatbot" style="color:#15172b;">Chatbot</a></li>
+                <li><a href="/logout" style="color:white;">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- <form action="/chat" method="POST">
+            <input type="text" name="message" placeholder=" ">
+        </form>
+        {{msg}} -->
+    <div class="chatbot-container">
+        <div id="header">
+            <h1>Chatbot</h1>
+        </div>
+        <div id="chatbot">
+            <div id="conversation">
+                <div class="chatbot-message">
+                    <p class="chatbot-text">Hi! 👋 it's great to see you!</p>
+                    <p>{{msg}}</p>
+                </div>
+            </div>
+            <form action="/chat" id="input-form" method="POST">
+                <message-container>
+                    <input id="input-field" type="text" name="message" placeholder="Type your message here">
+                    <button id="submit-button" type="submit">
+                      <img class="send-icon" src={{url_for( 'static', filename='send.png' )}} alt="">
+                    </button>
+                </message-container>
+
+            </form>
+        </div>
+
+    </div>
+
+
+</body>
+<footer style="margin-top: 2%;">
+    {% extends "footer.html" %}
+</footer>
+
+
+</html>

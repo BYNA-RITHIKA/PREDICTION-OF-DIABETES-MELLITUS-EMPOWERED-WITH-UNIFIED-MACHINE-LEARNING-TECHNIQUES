@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/styles/history.css" />
+    <title>History</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default" style="background-color: #15172b;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">
+                    Diabetes Predictor</a>
+            </div>
+            <ul class="nav navbar-nav">
+
+
+                <li><a href="/index" style="color:white;">Home</a></li>
+                <li><a href="/login" style="color:white;">Login</a></li>
+                <li><a href="/predict" style="color:white;">Predict</a></li>
+                <li class="active"><a href="/history" style="color:#15172b;">History</a></li>
+                <li><a href="/diet" style="color:white">Diet Recommendations</a></li>
+                <li><a href="/chatbot" style="color:white;">Chatbot</a></li>
+                <li><a href="/logout" style="color:white;">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <table class="table table-dark">
+            <thead>
+                <td scope="col">Date</td>
+                <td scope="col">Glucose Level</td>
+                <td scope="col">Insulin</td>
+                <td scope="col">Age</td>
+                <td scope="col">BMI</td>
+            </thead>
+            <tbody>
+                {% for row in records %}
+                <tr>
+                    <td scope="row">{{row["date"]}}</td>
+                    <td> {{ row["glucose"]}}</td>
+                    <td>{{row["insulin"]}}</td>
+                    <td>{{row['age']}}</td>
+                    <td>{{row['BMI']}}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br> {{ chart3|safe }}
+    </div>
+
+    <div style="margin-left: 160px; margin-right: 150px ; margin-top: 30px; font-size: larger; background-color: gray; color: white;">
+
+    </div>
+    <footer>
+        {% extends "footer.html" %}
+    </footer>
+
+
+</body>
+
+</html>

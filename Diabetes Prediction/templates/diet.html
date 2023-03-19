@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/styles/register.css" />
+
+    <title>Diabetes Predictor</title>
+
+
+    <style>
+        /* Set border spacing and collapse */
+        
+        body {
+            margin-bottom: 2%;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 15%;
+            margin-top: 0%;
+            margin-bottom: 20%;
+        }
+        /* Set table cell padding and alignment */
+        
+        td,
+        thead {
+            padding: 8px;
+            text-align: left;
+            /* background-color: lightblue; */
+        }
+        /* Set table header background color and font styles */
+        
+        thead td {
+            background-color: skyblue;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+        }
+        /* Set table row hover background color */
+        
+        tr:hover {
+            background-color: rgb(141, 164, 178);
+        }
+        /* Set table border and font styles */
+        
+        table,
+        thead,
+        td {
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+        /* table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        } */
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: lightblue;
+        }
+        
+        #north,
+        #south,
+        #east,
+        #west {
+            display: none;
+        }
+        
+        .left {
+            float: left;
+            width: 50%;
+        }
+        
+        .right {
+            float: right;
+            width: 50%;
+            padding-left: 30px;
+            height: 300px;
+        }
+        
+        .row1 {
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-top: 2%;
+            content: "";
+            clear: both;
+            display: table;
+            padding: 10px;
+            text-align: justify;
+        }
+        
+        .diet {
+            margin-left: 20%;
+        }
+        
+        .diet h4,
+        #region {
+            margin-left: 30%;
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default" style="background-color: #15172b; margin-bottom: 0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">
+                        Diabetes Predictor</a>
+            </div>
+            <ul class="nav navbar-nav">
+
+
+                <li><a href="/index" style="color:white;">Home</a></li>
+                <li><a href="/login" style="color:white;">Login</a></li>
+                <li><a href="/predict" style="color:white">Predict</a></li>
+                <li><a href="/history" style="color:white;">History</a></li>
+                <li class="active"><a href="/diet" style="color:#15172b;">Diet Recommendations</a></li>
+                <li><a href="/chatbot" style="color:white;">Chatbot</a></li>
+                <li><a href="/logout" style="color:white;">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row1">
+        <div class="left">
+            <img class="" style="width: 90%; display: block; height: 300px;" src="{{url_for('static', filename='diet.jpg')}}" />
+
+        </div>
+
+        <div class="right">
+            <h1>Diabetes Diet Plan</h1>
+            <p>It is recommended that a person with diabetes actively engage themselves in self-management, education, and treatment planning along with an individualized diet plan. With India being the diabetes capital of the world, it is high time that
+                people with diabetes follow a diabetic diet chart since it significantly helps in maintaining blood glucose levels and alleviating symptoms of diabetes.The right food choices often help manage blood sugar levels, improve blood cholesterol,
+                and keep you in a healthy weight range.</p>
+            <p>A person with diabetes can consume small and frequent meals to maintain their blood glucose level. Skipping meals may be disadvantageous since it may lead to hypoglycemia in a few people and for the same reason, a bedtime drink/snack is recommended
+                since it prevents nocturnal hypoglycemia.</p>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="diet">
+        <h2>Diabetes Diet Recommendations To Manage Blood Glucose Levels</h2>
+        <h4>Choose your region</h4>
+        <select name="region" id="region" style="width: 70px;height:25px;">
+            <option value="north">North</option>
+            <option value="south">South</option>
+            <option value="east">East</option>
+            <option value="west">west</option>
+          </select>
+        <button id="button" style="width: 100px;height: 25px;">View Diet</button>
+    </div>
+    <br>
+
+    <div class="south" id="south">
+        <table>
+            <thead>
+                <td>Meal</td>
+                <td>Foods to eat</td>
+            </thead>
+            <tr>
+                <td>Early Morning</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Fenugreek water (1 teaspoon fenugreek seeds soaked in a glass of water overnight)</li>
+                        <li> Overnight soaked almonds (4-5 pieces)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>2-3 idlis with chutney and drumstick sambar (use less salt)</li>
+                        <li> 2 dosas with chutney and vegetable sambar (use less salt)</li>
+                        <li>1 small cup of vegetable upma with chutney</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Pre-Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 apple/ guava/ 1 cup papaya</li>
+                        <li> Unstrained vegetable juice/ Bitter gourd juice</li>
+                        <li>Tender coconut water</li>
+                        <li>A glass of ragi malt with thin buttermilk</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>
+                            Cucumber and tomato salad + ½ cup brown rice + 1 cup sambar with lots of vegetables + any vegetable curry (with less spice) + 1 glass mint jeera buttermilk
+                        </li>
+                        <li>Cucumber and tomato salad + ½ cup brown rice + 1 cup vegetable curry + ½ cup fish or chicken curry with less spice + 1 glass mint jeera buttermilk</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Evening Snacks</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Green tea with roasted flaked rice with curry leaves and chopped garlic</li>
+                        <li>Black coffee and ¼ cup homemade snacks (Use less oil)</li>
+                        <li>Filter coffee with less milk and ½ cup roasted chana</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Vegetable clear soup or chicken and vegetable clear soup +2 chapatis</li>
+                        <li>Mixed vegetable curry + 2 chapatis + curd</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Before Bed</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup warm low-fat milk with a pinch of raw ground turmeric or cinnamon powder</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+    <div class="north" id="north">
+        <table>
+            <thead>
+                <td>Meal</td>
+                <td>Foods to eat</td>
+            </thead>
+            <tr>
+                <td>Early Morning</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Fenugreek water (1 teaspoon fenugreek seeds soaked in a glass of water overnight)</li>
+                        <li> Overnight soaked almonds (4-5 pieces)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 piece of brown bread with 2 boiled egg whites + 1 cup green tea.</li>
+                        <li> 2 small whole wheat parathas (without ghee or butter) with 1 cup raita + 1 teaspoon pickle + ½ cup boiled sprouts.</li>
+                        <li>Unprocessed ragi flakes/wheat flakes (½ cup) with one cup of low-fat milk and a pinch of cinnamon powder. For sweetening purposes, add ½ teaspoon honey</li>
+                        <li>2 vegetable moong chillas with green chutney and 1 whole boiled egg</li>
+
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Pre-Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup cucumber, tomato, and carrot salad. Add a dash of lime, and garnish with coriander leaves and a few mint leaves.</li>
+                        <li>1 seasonal fruit (except for banana, mango, sapota, custard apple, jackfruit)</li>
+                        <li>Unstrained vegetable juice/ bitter gourd juice</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>
+                            2 medium-sized whole wheat chapatis with ½ cup rajma/chole +½ cup thin dal + 1 cup okra curry/ any other vegetable curry + ½ cup curd/raita</li>
+                        <li>2 medium-sized whole wheat chapatis with 3 oz baked fish + any vegetable curry + 1 cup raita</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Evening Snacks</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Green tea without sugar or artificial sweeteners. You can have one small cup of bhel puri or baked snacks.</li>
+
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>2 medium-sized chapatis + any vegetable curry (any type of gourd, brinjal, capsicum, etc.) except for root vegetables + 1 cup dal/paneer </li>
+                        <li>2 medium-sized chapatis + chicken stew + any vegetable curry, except for root vegetables.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Before Bed</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup warm milk with a pinch of raw ground turmeric or cinnamon powder</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="east" id="east">
+        <table>
+            <thead>
+                <td>Meal</td>
+                <td>Foods to eat</td>
+            </thead>
+            <tr>
+                <td>Early Morning</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Fenugreek water (1 teaspoon fenugreek seeds soaked in a glass of water overnight)</li>
+                        <li> Overnight soaked almonds (4-5 pieces)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 slice of toasted wheat bread and 2 boiled egg whites or 1 one whole boiled egg</li>
+                        <li>Cucumber salad + 1 whole wheat chapati + any vegetable sabzi + ½ cup boiled sprouts</li>
+                        <li>Cucumber salad + 1 whole wheat stuffed paratha + peas sabzi + 1 teaspoon pickle</li>
+
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Pre-Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 apple or orange or 1 cup papaya or guava</li>
+                        <li>Any unstrained vegetable juice or bitter gourd juice</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>
+                            2 medium-sized whole wheat chapatis + 1/2 cup vegetables, such as peas, cauliflower, capsicum, any gourd, green beans, etc. + 1 cup daal</li>
+                        <li>Cucumber tomato salad + ½ cup rice + ½ cup vegetable curry + fish curry</li>
+                        <li>1 cup of daliya vegetable khichdi + ½ cup curd</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Evening Snacks</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>
+                            Masala puffed rice and green tea
+                        </li>
+                        <li>Green tea and a fistful of roasted nuts ( almonds, pistachios, walnuts)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>2 whole wheat chapatis + ½ cup chicken stew + ½ cup vegetable curry + ½ cup yogurt</li>
+                        <li>2 chapatis + ½ cup vegetable curry + ½ cup daal + ½ cup yogurt</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Before Bed</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup warm milk with a pinch of raw ground turmeric or cinnamon powder</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="west" id="west" style="margin-left: 15%;">
+        <table>
+            <thead>
+                <td>Meal</td>
+                <td>Foods to eat</td>
+            </thead>
+            <tr>
+                <td>Early Morning</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>Fenugreek water (1 teaspoon fenugreek seeds soaked in a glass of water overnight)</li>
+                        <li> Overnight soaked almonds (4-5 pieces)</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Breakfast</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup red rice vegetable poha + ½ cup boiled sprouts</li>
+                        <li>2 besan chillas + 2 tablespoons green chutney</li>
+                        <li>1 cup vegetable oats upma + 1 whole boiled egg or 2 boiled egg whites</li>
+
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Pre-Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 apple or guava/1 cup papaya</li>
+                        <li>1 glass unstrained vegetable juice/1 glass bitter gourd juice</li>
+                        <li>1 cup cucumber, tomato, and carrot salad</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Lunch</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>2 chapatis + 1 cup vegetable curry + 1 cup daal + ½ cup curd</li>
+                        <li>3 oz steamed or baked fish/chicken + ½ cup rice + 1 cup vegetable curry + ½ cup curd</li>
+                        <li>1 cup vegetable daliya khichdi + 1 roasted homemade papad + 1 cup curd</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Evening Snacks</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>
+                            Green tea with ½ cup roasted chana
+                        </li>
+                        <li>Green tea with ½ cup green moong/ black chana chaat</li>
+                        <li>Green tea with 1 cup ghee-roasted makhana</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Dinner</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup vegetable curry + 2 multigrain chapatis + 1 cup daal + curd</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Before Bed</td>
+                <td>
+                    <ul>
+                        <h5>Options</h5>
+                        <li>1 cup warm milk with a pinch of raw ground turmeric or cinnamon powder</li>
+                        <li>Cucumber salad + 2 multigrain chapatis + ½ cup vegetable curry + Fish curry or chicken curry</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const btn = document.getElementById("button");
+        btn.onclick = function() {
+            const dropdown = document.getElementById("region");
+            const selectedIndex = dropdown.selectedIndex;
+            const selectedOption = dropdown.options[selectedIndex];
+
+            const selectedValue = selectedOption.value;
+            const selectedText = selectedOption.text;
+            document.getElementById(selectedValue).style.display = "block";
+
+            console.log("Selected value: " + selectedValue);
+            console.log("Selected text: " + selectedText);
+        }
+    </script>
+
+    <footer style="margin-bottom: 0%;padding-top: 160px;">
+        {% extends "footer.html" %}
+    </footer>
+
+</body>
+
+</html>

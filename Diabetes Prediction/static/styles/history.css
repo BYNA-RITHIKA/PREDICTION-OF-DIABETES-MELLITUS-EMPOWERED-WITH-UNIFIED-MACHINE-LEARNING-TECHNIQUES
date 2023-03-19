@@ -1,0 +1,42 @@
+/* .container {
+    padding: 2rem 0rem;
+    background-color: dimgray;
+}
+
+h4 {
+    margin: 2rem 0rem 1rem;
+}
+
+td,
+th {
+    vertical-align: middle;
+    color: white;
+}
+
+tr {
+    border: darkslategray;
+    color: white;
+} */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+thead td {
+    background-color: #eee;
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
+
+tbody td,
+thead th {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

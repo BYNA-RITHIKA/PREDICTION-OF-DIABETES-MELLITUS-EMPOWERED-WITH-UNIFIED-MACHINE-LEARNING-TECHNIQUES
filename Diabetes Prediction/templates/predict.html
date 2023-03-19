@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/styles/register.css" />
+
+    <title>Diabetes Predictor</title>
+
+
+    <style>
+        .margin {
+            margin-left: 0px;
+            /* margin-right: -100px; */
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default" style="background-color: #15172b; margin-bottom: 0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">
+                        Diabetes Predictor</a>
+            </div>
+            <ul class="nav navbar-nav">
+
+
+                <li><a href="/index" style="color:white;">Home</a></li>
+                <li><a href="/login" style="color:white;">Login</a></li>
+                <li class="active"><a href="/predict" style="color:#15172b;">Predict</a></li>
+                <li><a href="/history" style="color:white;">History</a></li>
+                <li><a href="/diet" style="color:white">Diet Recommendations</a></li>
+                <li><a href="/chatbot" style="color:white;">Chatbot</a></li>
+                <li><a href="/logout" style="color:white;">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div style="display: flex; justify-content: space-evenly;">
+        <div class="margin">
+            <!-- <h1>
+                    Diabetes Predictor
+                </h1> -->
+
+            <img class="" style="width: 90%; height: 770px;  " src="{{url_for('static', filename='prediction.jpg')}}" />
+        </div>
+        <div>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <p class="flashes" style="align-content: right;margin-left: 70%;">
+                <!-- {% for message in messages %} -->
+                <p>{{ message }}
+                </p>
+                <!-- {% endfor %} -->
+
+            </p>
+
+        </div>
+        {% endif %} {% endwith %}
+        <div style="margin-top: 5%;margin-left: 30px; margin-right: 30px;">
+            <form action="/prediction" class="form" id="form" method="POST">
+                <div class="title">Predict Diabetes</div>
+
+                <div class="input-container ic1">
+                    <input id="glucose" class="input" type="text" name="Glucose Level" placeholder=" " required/>
+                    <div class="cut"></div>
+                    <label for="Glucose Level" class="placeholder">Glucose Level</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="insulin" class="input" type="text" name="Insulin" placeholder=" " required />
+                    <div class="cut"></div>
+                    <label for="Insulin" class="placeholder">Insulin</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="age" class="input" type="text" name="Age" placeholder=" " required />
+                    <div class="cut"></div>
+                    <label for="age" class="placeholder">Age</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="BMI" class="input" type="text" name="BMI" placeholder=" " required />
+                    <div class="cut"></div>
+                    <label for="BMI" class="placeholder">BMI</label>
+                </div>
+                <input type="submit" class="submit" value="Predict">
+
+            </form>
+
+            <br>
+
+            <p style="font-size: large;">
+                {{msg}}</p> {% if msg %}
+            <a href="/result"><input type="button" class="submit" value="View Dashboard" style="width:200px; margin-left: 5%;"></a>{% endif %}
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

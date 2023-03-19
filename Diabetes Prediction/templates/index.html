@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Home</title>
+    <!-- <link rel="stylesheet" href="../static/styles/register.css" /> -->
+
+
+    <style>
+        .left {
+            float: left;
+            width: 50%;
+        }
+        
+        .right {
+            float: right;
+            width: 50%;
+            padding-left: 30px;
+        }
+        
+        .row1 {
+            margin-left: 2%;
+            margin-right: 2%;
+            content: "";
+            clear: both;
+            display: table;
+            padding: 10px;
+            text-align: justify;
+        }
+        
+        body {
+            background-color: azure;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default" style="background-color: #15172b; margin-bottom: 0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">
+                    Diabetes Predictor</a>
+            </div>
+            <ul class="nav navbar-nav">
+
+
+                <li class="active"><a href="/index" style="color:#15172b;">Home</a></li>
+                <li><a href="/login" style="color:white;">Login</a></li>
+                <li><a href="/predict" style="color:white;">Predict</a></li>
+                <li><a href="/history" style="color:white;">History</a></li>
+                <li><a href="/diet" style="color:white;">Diet Recommendations</a></li>
+                <li><a href="/chatbot" style="color:white;">Chatbot</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <img class="" style="width: 100%; display: block; height: 700px;" src="{{url_for('static', filename='diabetes.jpeg')}}" />
+    </div>
+
+
+    <div class="row1">
+        <div class="left">
+            <h1> What is diabetes?</h1><br>
+            <p>Diabetes is commonly called diabetes mellitus. It is a disease that occurs when the blood glucose level is high. World Health Organisation (WHO) defines Diabetes as a chronic disorder that occurs when the pancreas is no longer able to make
+                insliin, or when the body cannot effectively use the insliin, it produces. Diabetes is a lifestyle disorder that, when not treated, paves the way for other metabolic disorders. Blood glucose or blood sugar is the main source of energy
+                which is derived from the food we eat </p>
+            <p>Diabetes can be classified into a few types. They are:</p>
+            <ul>
+                <li>Prediabetes</li>
+                <li>Type 1 diabetes</li>
+                <li>Type 2 diabetes </li>
+                <li>Gestational diabetes</li>
+            </ul>
+
+        </div>
+        <div class="right">
+            <h1>Health Complications includes:</h1><br>
+            <p>
+                <ul>
+                    <li>Cardiovascliar diseases</li>
+                    <li>Strokes</li>
+                    <li>Foot licer</li>
+                    <li>Nerve damage</li>
+                    <li>Kidney damage</li>
+                    <li>Liver damage</li>
+                    <li>Eye damage</li>
+                    <li>Cognitive impairment and </li>
+                    <li>Mlitiple organ failure</li>
+                    <li>Death</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="left">
+            <h1> Prediabetes</h1><br>
+            <p>Prediabetes is a common medical condition where blood sugar levels are elevated but not high enough to diagnose Type 2 Diabetes. Nearly one-third of the American population, or 88 million people, have Prediabetes. In India, according to the
+                National Urban Diabetes, the incidence of Prediabetes is thought to be 14%. Identifying these individuals is the main issue that has to be dealt with to implement an early therapeutic intervention. Your blood sugar level can return to
+                normal with the help of a balanced diet, regular exercise and maintaining a healthy weight. The same lifestyle modifications that can prevent Type 2 Diabetes in adults may also be used to regulate blood sugar levels in children. According
+                to the National Institutes of Health (NIH), Prediabetes can be controlled and even reversed. Treatment options for the condition include medication, diet and exercise adjustments </p>
+
+
+        </div>
+
+        <div class="right">
+            <img class="" style="width: 90%; display: block; height: 300px;" src="{{url_for('static', filename='PREDIABETES-img.jpg')}}" />
+
+        </div>
+    </div>
+    <div class="row1">
+        <div class="left">
+            <img class="" style="width: 90%; display: block; height: 300px;" src="{{url_for('static', filename='type1-img.jpg')}}" />
+
+        </div>
+
+        <div class="right">
+            <h1>Type 1 Diabetes</h1><br>
+            <p>
+                Type 1 Diabetes is an autoimmune disorder commonly affecting children. It is also called insulin-dependent Diabetes or juvenile Diabetes as it commonly affects children. The body’s immune cells destroy the beta cells of the pancreas and insulin is not
+                secreted, leading to the complete absence of insulin. So the external injection of insulin is the only way of treatment.As there is no insulin in the body, insulin has to be injected from outside in Type 1 Diabetes. It is different from
+                Type 2 Diabetes where insulin is still secreted within the body.Symptoms of high sugars like weight loss, increased thirst, increased urination, bed wetting, tiredness, irritability, increased hunger and infections. Diabetic ketoacidosis
+                is an emergency, life-threatening situation with very high sugars. It is commonly seen in Type 1 Diabetes.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row1">
+        <div class="left">
+            <h1>Type 2 Diabetes</h1><br>
+            <p>Type 2 Diabetes is a chronic metabolic lifestyle disorder characterised by varying levels of insulin resistance and a relative absence of effectively functioning insulin levels. Paradoxically there are high insulin levels for which body cells
+                are resistant to allow glucose entry into the cells. Hence, glucose does not enter cells to give energy and sugar increases in the blood.</p>
+
+
+
+        </div>
+
+        <div class="right">
+            <img class="" style="width: 90%; display: block; height: 300px;" src="{{url_for('static', filename='type2.png')}}" />
+
+        </div>
+    </div>
+    <div class="row1">
+        <div class="left">
+            <img class="" style="width: 90%; display: block; height: 300px;" src="{{url_for('static', filename='gestational.png')}}" />
+
+        </div>
+
+        <div class="right">
+            <h1> Gestational Diabetes</h1><br>
+            <p>
+                Gestational diabetes or gestational diabetes mellitus (GDM) is the first time occurrence of diabetes during the pregnancy period. It is the onset or first recognition of elevated glucose levels during pregnancy. Gestational diabetes can be controlled
+                with two methods. It can be managed with diet control and nutrition therapy called diet-controlled gestational diabetes or A1GDM. Gestational diabetes controlled with medication to attain adequate glycemic control is A2GDM.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row1">
+        <div class="left">
+            <h1> Causes of Diabetes</h1><br>
+            <p>
+
+                Diabetes occurs because the body is unable to use blood sugar properly. The main cause of the condition is a mystery but genetic and environmental factors play a big role. Some of the factors which cause diabetes are:
+                <ul>
+                    <li>Lack of insulin production </li>
+                    <li> Insulin Resistance </li>
+                    <li>Genetics </li>
+                    <li>Hormones </li>
+                    <li> Obesity</li>
+                    <li>Poor diet </li>
+                    <li> Lack of exercise</li>
+
+                </ul>
+            </p>
+
+        </div>
+        <div class="right">
+            <h1> Symptoms of Diabetes</h1><br>
+            <p>
+                When a person has diabetes, they may exhibit symptoms like
+                <ul>
+                    <li>Increased hunger and thirst</li>
+                    <li>Sudden weight loss</li>
+                    <li>Frequent urination</li>
+                    <li>Tiredness</li>
+                    <li>Vision impairment</li>
+                    <li>Scores that take more time to heal. </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <footer>
+        {% extends "footer.html" %}
+    </footer>
+
+
+
+
+</body>
+
+</html>
