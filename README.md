@@ -23,8 +23,7 @@ Database                   - MongoDB
 ## Architecture of the proposed system
 ![image](https://github.com/user-attachments/assets/9dc41d85-76a3-4c12-ba02-3162b26ad9ae)
 
-## Alogorithms and their Performance
-![image](https://github.com/user-attachments/assets/87b0ee03-a04b-4f9e-9825-d5d3d8538345)
+
 
 
 
